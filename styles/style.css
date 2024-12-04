@@ -30,3 +30,7 @@ caption {
     font-size: 50px;
     font-style: bold;
 }
+
+.alert {
+    color: rgb(224, 0, 0);
+}
