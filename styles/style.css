@@ -1,0 +1,32 @@
+body {
+    background-image: url("../assets/fond.png");
+    background-size: cover;
+}
+
+table {
+    margin-left: 2%;
+    width: 100%;
+}
+
+table, tr, td {
+    background-color: rgb(128, 128, 128, 0.5);
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 33%;
+  }
+
+table, tr {
+    height: 100px;
+    width: 80%;
+}
+
+table, caption {
+    background-color: rgb(128, 128, 128, 0.5);
+    border: 1px solid;
+    height: 50px;
+}
+
+caption {
+    font-size: 50px;
+    font-style: bold;
+}
