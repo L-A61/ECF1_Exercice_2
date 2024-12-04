@@ -13,11 +13,16 @@ const secretCodeAlert = document.getElementById("secretCodeAlert");
 const submit = document.getElementById("submit");
 const cancel = document.getElementById("cancel");
 
+const myModal = document.getElementById('myModal');
+const myInput = document.getElementById('myInput');
+
 lastName.addEventListener("change", function (event) {
     event.preventDefault();
+    lastName.value = lastName.value.replace(/^./, lastName.value[0].toUpperCase());
 });
 firstName.addEventListener("change", function (event) {
     event.preventDefault();
+    firstName.value = firstName.value.replace(/^./, firstName.value[0].toUpperCase());
 });
 dateOfBirth.addEventListener("change", function (event) {
     event.preventDefault();
@@ -56,9 +61,7 @@ submit.addEventListener("click", function (event) {
         
         // Test si le code confidentiel est valide
         /^[F]{1,1}[R]{1,1}[0-9]{5,5}[A-Z-._]{3,3}[xX]{1,1}$/.test(secretCode.value)) {
-        alert("tous remplies");
-
-        removeAlert();
+            removeAlert();
 
 
     } else {
@@ -115,5 +118,5 @@ submit.addEventListener("click", function (event) {
 });
 
 cancel.addEventListener("click", function () {
-    removeAlert()
+    removeAlert();
 });

@@ -3,34 +3,47 @@ body {
     background-size: cover;
 }
 
-table {
-    margin-left: 2%;
-    width: 100%;
+.form-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(128, 128, 128);
+    max-width: 50%;
 }
 
-table, tr, td {
-    background-color: rgb(128, 128, 128, 0.5);
-    border: 1px solid black;
-    border-collapse: collapse;
+.lastName-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.firstName-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.dateOfBirth-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.email-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.secretCode-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.name {
     width: 33%;
-  }
-
-table, tr {
-    height: 100px;
-    width: 80%;
 }
 
-table, caption {
-    background-color: rgb(128, 128, 128, 0.5);
-    border: 1px solid;
+.input {
+    width: 33%;
     height: 50px;
 }
 
-caption {
-    font-size: 50px;
-    font-style: bold;
-}
-
 .alert {
-    color: rgb(224, 0, 0);
+    width: 33%;
 }
