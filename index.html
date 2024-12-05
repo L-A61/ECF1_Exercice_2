@@ -11,55 +11,68 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
+<!-- Formulaire -->
 <form>
+  <section class="main-container">
+    <section class="title-container">
+      <h1>Formulaire Bancaire</h1>
+    </section>
     <section class="form-container">
+      <!-- Ligne pour le nom -->
         <section class="lastName-container">
             <p class="name">Nom:</p>
             <input placeholder="Nom..." id="lastName" class="input">
             <p id="lastNameAlert" class="alert text-danger"></p>
         </section>
 
+        <!-- Ligne pour le prénom -->
         <section class="firstName-container">
             <p class="name">Prénom:</p>
             <input placeholder="Prénom..." id="firstName" class="input">
             <p id="firstNameAlert" class="alert text-danger"></p>
         </section>
 
+        <!-- Ligne pour la date de naissance -->
         <section class="dateOfBirth-container">
             <p class="name">Date de naissance:</p>
             <input placeholder="jj/mm/aaaa..." id="dateOfBirth" class="input">
             <p id="dateOfBirthAlert" class="alert text-danger"></p>
         </section>
 
+        <!-- Ligne pour l'email -->
         <section class="email-container">
             <p class="name">Email:</p>
             <input placeholder="exemple@exemple.ex..." id="email" class="input">
             <p id="emailAlert" class="alert text-danger"></p>
         </section>
 
+        <!-- Ligne pour le code confidentiel -->
         <section class="secretCode-container">
             <p class="name">Code Confidentiel:</p>
-            <input placeholder="Code Confidentiel..." id="secretCode" class="input">
+            <input placeholder="FR12345A_.x" id="secretCode" class="input">
             <p id="secretCodeAlert" class="alert text-danger"></p>
         </section>
-    </section>
-
+        <hr>
+        <!-- Ligne pour les boutons envoyer et annuler-->
         <section class="button-container">
             <button id="submit">Envoyer</button>
             <button id="cancel">Annuler</button>
         </section>
+      </section>
+    </section>
 </form>
 
+<!-- Modal a afficher lors de l'envoie des données-->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-          <h1>Formulaire Bancaire</h1>
+          <h1 class="modal-title">Formulaire Bancaire</h1>
         <div class="modal-body">
-          <p>Vos données sont valides. elles vont être transmises sur nos serveurs pour traitement</p>
-          <p>Nous sommes ravis de vous compter parmi nos nouveaux clients</p>
+          <p>Vos données sont valides. elles vont être transmises sur nos serveurs pour traitement.</p>
+          <p>Nous sommes ravis de vous compter parmi nos nouveaux clients.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-secondary" id="alertRemoval" data-bs-dismiss="modal">Valider</button>
         </div>
       </div>
     </div>

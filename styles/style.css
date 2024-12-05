@@ -1,49 +1,116 @@
+/*Insertion de l'image en arrière plan*/
 body {
     background-image: url("../assets/fond.png");
     background-size: cover;
 }
 
-.form-container {
+/*container principal de l'ensemble des éléments*/
+.main-container {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    background-color: rgba(128, 128, 128);
-    max-width: 50%;
+    align-items: center;
 }
 
+/*container du titre*/
+.title-container {
+    display: flex;
+    justify-content: center;
+    color: green;
+    width: 50%;
+    height: 50%;
+    background-color: rgba(128, 128, 128, 0.9);
+    margin-bottom: 10px;
+    border: 5px solid green;
+    border-radius: 30px;
+}
+
+/*container des éléments du formulaire*/
+.form-container {
+    width: 50%;
+    height: 50%;
+    background-color: rgba(128, 128, 128, 0.9);
+    border: 5px solid green;
+    border-radius: 30px;
+}
+
+/*container des élements pour le nom*/
 .lastName-container {
     display: flex;
     flex-direction: row;
+    margin: 10px;
 }
 
+/*container des élements pour le prénom*/
 .firstName-container {
     display: flex;
     flex-direction: row;
+    margin: 10px;
 }
 
+/*container des élements pour la date de naissance*/
 .dateOfBirth-container {
     display: flex;
     flex-direction: row;
+    margin: 10px;
 }
 
+/*container des élements pour l'email'*/
 .email-container {
     display: flex;
     flex-direction: row;
+    margin: 10px;
 }
 
+/*container des élements pour le code confidentiel*/
 .secretCode-container {
     display: flex;
     flex-direction: row;
+    margin: 10px;
 }
 
+/*container des boutons*/
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+/*"nom:" "prénom:" "date de naissance:", "email: ", "code confidentiel: "*/
 .name {
     width: 33%;
 }
 
+/*Les champs de saisis*/
 .input {
     width: 33%;
-    height: 50px;
+    height: 40px;
+    margin-bottom: 5%;
 }
 
+/*Les messages d'alertes "champs obligatoires..."*/
 .alert {
     width: 33%;
+}
+
+/*boutons*/
+button {
+    background-color: green;
+}
+
+/*boutons quand ils sont survolés*/
+button:hover {
+    background-color: rgb(0, 71, 0);
+}
+
+/*css pour le titre de la modal*/
+.modal-title {
+    display: flex;
+    justify-content: center;
+    color: green;
+    height: 50%;
+    background-color: rgba(128, 128, 128, 0.9);
+    margin-bottom: 10px;
+    border: 5px solid green;
+    border-radius: 30px;
 }
