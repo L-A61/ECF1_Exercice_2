@@ -23,17 +23,19 @@ const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
 const alertRemoval = document.getElementById("alertRemoval");
 
 // Évite l'évenement par défaut du formulaire pour le champ de saisie nom
-// Quand la valeur du nom change, on remplace le premier caractère de la valeur par sa majuscule.
+// Quand la valeur du nom change, on remplace le premier caractère de la valeur par sa majuscule. Les autres caractères qui suivent se transforment en minuscules.
 lastName.addEventListener("change", function (event) {
     event.preventDefault();
     lastName.value = lastName.value.replace(/^./, lastName.value[0].toUpperCase());
+    lastName.value = lastName.value.replace(/(\B)[^ ]*/g, match => (match.toLowerCase()));
 });
 
 // Évite l'évenement par défaut du formulaire pour le champ de saisie prénom
-// Quand la valeur du prénom change, on remplace le premier caractère de la valeur par sa majuscule.
+// Quand la valeur du prénom change, on remplace le premier caractère de la valeur par sa majuscule. Les autres caractères qui suivent se transforment en minuscules.
 firstName.addEventListener("change", function (event) {
     event.preventDefault();
     firstName.value = firstName.value.replace(/^./, firstName.value[0].toUpperCase());
+    firstName.value = firstName.value.replace(/(\B)[^ ]*/g, match => (match.toLowerCase()));
 });
 
 // Évite l'évenement par défaut du formulaire pour le champ de saisie date de naissance
@@ -124,9 +126,6 @@ function validDate(_date) {
     return true;
 }
 
-
-
-
 // Fonction pour retirer la valeur des champs de saisis
 function removeInput() {
     lastName.value = "";
@@ -162,7 +161,7 @@ submit.addEventListener("click", function (event) {
         /^(.?[a-zA-Z0-9]){1,64}[@]{1,1}[a-zA-Z0-9]{1,248}[.]{1,1}[a-z]{2,6}$/.test(email.value) && 
         
         // Test si le code confidentiel est valide
-        /^[F]{1,1}[R]{1,1}[0-9]{5,5}[A-Z-._]{3,3}[xX]{1,1}$/.test(secretCode.value)) {
+        /^[F]{1,1}[R]{1,1}[0-9]{5,5}[A-Z-._]{3,3}[x]{1,1}$/.test(secretCode.value)) {
             // Affiche la modal contenue dans la constante myModal
             myModal.show();
 
@@ -172,7 +171,7 @@ submit.addEventListener("click", function (event) {
         if (lastName.value.length < 1) {
             lastNameAlert.innerText = "Champ obligatoire";
         } else if (!/[A-zÀ-ú0-9]{3,}/.test(lastName.value)) {
-            lastNameAlert.innerText = "Champ invalide: veulliez saisir au moins trois caractères.";
+            lastNameAlert.innerText = "3 caractères alphanumériques au minimum !!!";
         } else {
             lastNameAlert.innerHTML = "";
         }
@@ -181,7 +180,7 @@ submit.addEventListener("click", function (event) {
         if (firstName.value.length < 1) {
             firstNameAlert.innerText = "Champ obligatoire";
         } else if (!/[A-zÀ-ú0-9]{3,}/.test(firstName.value)) {
-            firstNameAlert.innerText = "Champ invalide: veulliez saisir au moins trois caractères.";
+            firstNameAlert.innerText = "3 caractères alphanumériques au minimum !!!";
         } else {
             firstNameAlert.innerHTML = "";
         }
@@ -190,7 +189,7 @@ submit.addEventListener("click", function (event) {
         if (dateOfBirth.value.length < 1) {
             dateOfBirthAlert.innerText = "Champ obligatoire"
         } else if (!/^[0-9]{2,2}[/]{1,1}[0-9]{2,2}[/]{1,1}[0-9]{4,4}$/.test(dateOfBirth.value)) {
-            dateOfBirthAlert.innerText = "Champ invalide veulliez respecter le format jj/mm/aaaa, jj-mm-aaaa ou jj.mm.aaaa";
+            dateOfBirthAlert.innerText = "Date au format dd/mm/aaaa";
         } else if (!validDate(dateOfBirth.value)){
             dateOfBirthAlert.innerText = "Cette date n'existe pas";
         } else {
@@ -211,8 +210,8 @@ submit.addEventListener("click", function (event) {
         // Saisis du code confidentiel
         if (secretCode.value.length < 1) {
             secretCodeAlert.innerText = "Champ Obligatoire";
-        } else if (!/^[F]{1,1}[R]{1,1}[0-9]{5,5}[A-Z-._]{3,3}[xX]{1,1}$/.test(secretCode.value)) {
-            secretCodeAlert.innerText = "Code invalide, vérifier qu'il contient le préfixe FR, 5 chiffres et 3 lettres majuscules (ou bien - . ou _), ainsi que le suffixe x ";
+        } else if (!/^[F]{1,1}[R]{1,1}[0-9]{5,5}[A-Z-._]{3,3}[x]{1,1}$/.test(secretCode.value)) {
+            secretCodeAlert.innerText = "FR puis 5 chiffres puis 3 Lettres majuscules et x en suffixe";
         } else {
             secretCodeAlert.innerHTML = "";
         }
