@@ -55,6 +55,75 @@ secretCode.addEventListener("change", function (event) {
     event.preventDefault();
 });
 
+// Fonction qui vérifie si la date saisie est valide
+function validDate(_date) {
+    // Ces trois variables récupère le jour, mois et année saisis.
+    let dd = _date.substring(0, 2);
+    let mm = _date.substring(3, 5);
+    let yyyy = _date.substring(6);
+
+    // Déclaration du boolean is31Days pour savoir si le mois contient 31 jours
+    let is31Days = false;
+
+    // Déclaration du boolean isLeapYear pour savoir si l'année est bissextille
+    let isLeapYear = false;
+
+    // Si le mois saisis est celle de janvier, mars, mai, juillet, aout, octobre ou décembre, la boolean is31Days est true
+    if (mm == "01" || mm == "03" || mm == "05" || mm == "07" || mm == "08" || mm == "10" || mm == "12") {
+        is31Days = true;
+    }
+
+    // Si l'année est divisable par 4 et n'est pas divisable par 100, ou bien l'année est divisable par 400, l'année est bissextille.
+    if ((parseInt(yyyy) % 4 == 0) && (parseInt(yyyy) % 100 != 0) || (parseInt(yyyy) % 400 == 0)) {
+        isLeapYear = true;
+    }
+
+    // Si le mois saisis est inférieur à 1 ou supérieur à 12, la date n'est pas valide
+    if (parseInt(mm) < 1 || parseInt(mm) > 12) {
+        return false;
+    }
+
+    // Le début de la boucle regarde si le mois contient 31 jours
+    if (is31Days) {
+
+        // Si le jour saisi est inférieur à 1 ou supérieur à 31, la date n'est pas valide
+        if (parseInt(dd) < 1 || parseInt(dd) > 31) {
+            return false;
+        }
+    
+    // Sinon on regarde aussi si le mois saisis est février
+    } else if (mm == "02") {
+
+        // Si l'année est bissextille
+        if (isLeapYear) {
+
+            // Si le jour saisi est inférieur à 1 ou supérieur à 29, la date n'est pas valide
+            if (parseInt(dd) < 1 || parseInt(dd) > 29) {
+                return false;
+            }
+
+        // Si l'année n'est pas bissextille
+        } else {
+
+            // Si le jour saisi est inférieur à 1 ou supérieur à 28, la date n'est pas valide
+            if (parseInt(dd) < 1 || parseInt(dd) > 28) {
+                return false;
+            }
+        }
+
+    // Sinon le mois ne contient que 30 jours
+    } else {
+
+        // Si le jour saisi est inférieur à 1 ou supérieur à 30, la date n'est pas valide
+        if (parseInt(dd) < 1 || parseInt(dd) > 30) {
+            return false;
+        }
+    }
+
+    // Dans le cas où la date saisis ne présente aucun problème autrement, la date est valide
+    return true;
+}
+
 
 
 
@@ -87,7 +156,7 @@ submit.addEventListener("click", function (event) {
         /[A-zÀ-ú0-9]{3,}/.test(firstName.value) &&
         
         // Test si la date de naissance est valide
-        /^[0-9]{2,2}[/]{1,1}[0-9]{2,2}[/]{1,1}[0-9]{4,4}$/.test(dateOfBirth.value) &&
+        /^[0-9]{2,2}[/]{1,1}[0-9]{2,2}[/]{1,1}[0-9]{4,4}$/.test(dateOfBirth.value) && validDate(dateOfBirth.value) &&
         
         // Test si l'email est valide
         /^(.?[a-zA-Z0-9]){1,64}[@]{1,1}[a-zA-Z0-9]{1,248}[.]{1,1}[a-z]{2,6}$/.test(email.value) && 
@@ -122,7 +191,8 @@ submit.addEventListener("click", function (event) {
             dateOfBirthAlert.innerText = "Champ obligatoire"
         } else if (!/^[0-9]{2,2}[/]{1,1}[0-9]{2,2}[/]{1,1}[0-9]{4,4}$/.test(dateOfBirth.value)) {
             dateOfBirthAlert.innerText = "Champ invalide veulliez respecter le format jj/mm/aaaa, jj-mm-aaaa ou jj.mm.aaaa";
-        
+        } else if (!validDate(dateOfBirth.value)){
+            dateOfBirthAlert.innerText = "Cette date n'existe pas";
         } else {
             dateOfBirthAlert.innerHTML = "";
         }
